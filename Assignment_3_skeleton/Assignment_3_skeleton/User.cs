@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_3_skeleton
 {
+    [Serializable]
     public class User
     {
         public int Id { get; set; }
@@ -56,7 +57,7 @@ namespace Assignment_3_skeleton
         public bool equals(Object obj)
         {
             if (!(obj is User))
-			return false;
+                return false;
 
             User other = (User)obj;
 
