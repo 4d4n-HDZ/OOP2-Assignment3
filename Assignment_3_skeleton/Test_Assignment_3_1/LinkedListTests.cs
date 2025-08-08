@@ -1,237 +1,142 @@
-﻿using Assignment_3_skeleton;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-/*using static System.Runtime.InteropServices.JavaScript.JSType;*/
+﻿using Assignment_3;
+using NUnit.Framework;
 
-namespace Test_Assignment_3
+namespace Test_Assignment_3_1
 {
+    [TestFixture]
     public class LinkedListTests
     {
-        private LinkedListADT linkedList;
-
-        [SetUp]
-        public void Setup()
-        {
-            // Create your concrete linked list class and assign to to linkedList.
-            this.linkedList = new SLL();
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            this.linkedList.Clear();
-        }
-
-        //Test the linked list is empty.
         [Test]
-        public void TestIsEmpty()
+        public void EmptyList()
         {
-            Assert.True(this.linkedList.IsEmpty());
-            Assert.AreEqual(0, this.linkedList.Size());
+            var l = new SLL();
+            Assert.That(l.IsEmpty(), Is.True);
+            Assert.That(l.Size(), Is.EqualTo(0));
         }
-
-        //Tests appending elements to the linked list.
         [Test]
-        public void TestAppendNode()
+        public void Prepend()
         {
-            this.linkedList.Append("a");
-            this.linkedList.Append("b");
-            this.linkedList.Append("c");
-            this.linkedList.Append("d");
-
-            /**
-             * Linked list should now be:
-             * 
-             * a -> b -> c -> d
-             */
-
-            // Test the linked list is not empty.
-            Assert.False(this.linkedList.IsEmpty());
-
-            // Test the size is 4
-            Assert.AreEqual(4, this.linkedList.Size());
-
-            // Test the first node value is a
-            Assert.AreEqual("a", this.linkedList.Retrieve(0));
-
-            // Test the second node value is b
-            Assert.AreEqual("b", this.linkedList.Retrieve(1));
-
-            // Test the third node value is c
-            Assert.AreEqual("c", this.linkedList.Retrieve(2));
-
-            // Test the fourth node value is d
-            Assert.AreEqual("d", this.linkedList.Retrieve(3));
+            var l = new SLL();
+            l.Prepend("x");
+            Assert.That(l.Size(), Is.EqualTo(1));
+            Assert.That(l.Retrieve(0), Is.EqualTo("x"));
         }
-
-        //Tests prepending nodes to linked list.
         [Test]
-        public void testPrependNodes()
+        public void Append()
         {
-            this.linkedList.Prepend("a");
-            this.linkedList.Prepend("b");
-            this.linkedList.Prepend("c");
-            this.linkedList.Prepend("d");
-
-            /**
-             * Linked list should now be:
-             * 
-             * d -> c -> b -> a
-             */
-
-            // Test the linked list is not empty.
-            Assert.False(this.linkedList.IsEmpty());
-
-            // Test the size is 4
-            Assert.AreEqual(4, this.linkedList.Size());
-
-            // Test the first node value is a
-            Assert.AreEqual("d", this.linkedList.Retrieve(0));
-
-            // Test the second node value is b
-            Assert.AreEqual("c", this.linkedList.Retrieve(1));
-
-            // Test the third node value is c
-            Assert.AreEqual("b", this.linkedList.Retrieve(2));
-
-            // Test the fourth node value is d
-            Assert.AreEqual("a", this.linkedList.Retrieve(3));
+            var l = new SLL();
+            l.Append(1);
+            l.Append(2);
+            Assert.That(l.Size(), Is.EqualTo(2));
+            Assert.That(l.Retrieve(1), Is.EqualTo(2));
         }
-
-        //Tests inserting node at valid index.
         [Test]
-        public void TestInsertNode()
+        public void Insert()
         {
-            this.linkedList.Append("a");
-            this.linkedList.Append("b");
-            this.linkedList.Append("c");
-            this.linkedList.Append("d");
-
-            this.linkedList.Insert("e", 2);
-
-            /**
-             * Linked list should now be:
-             * 
-             * a -> b -> e -> c -> d
-             */
-
-            // Test the linked list is not empty.
-            Assert.False(this.linkedList.IsEmpty());
-
-            // Test the size is 4
-            Assert.AreEqual(5, this.linkedList.Size());
-
-            // Test the first node value is a
-            Assert.AreEqual("a", this.linkedList.Retrieve(0));
-
-            // Test the second node value is b
-            Assert.AreEqual("b", this.linkedList.Retrieve(1));
-
-            // Test the third node value is e
-            Assert.AreEqual("e", this.linkedList.Retrieve(2));
-
-            // Test the third node value is c
-            Assert.AreEqual("c", this.linkedList.Retrieve(3));
-
-            // Test the fourth node value is d
-            Assert.AreEqual("d", this.linkedList.Retrieve(4));
+            var l = new SLL();
+            l.Append("a");
+            l.Append("c");
+            l.Insert("b", 1);
+            Assert.That(l.Retrieve(1), Is.EqualTo("b"));
         }
-
-        //Tests replacing existing nodes data.
         [Test]
-        public void TestReplaceNode()
+        public void Replace()
         {
-            this.linkedList.Append("a");
-            this.linkedList.Append("b");
-            this.linkedList.Append("c");
-            this.linkedList.Append("d");
-
-            this.linkedList.Replace("e", 2);
-
-            /**
-             * Linked list should now be:
-             * 
-             * a -> b -> e -> d
-             */
-
-            // Test the linked list is not empty.
-            Assert.False(this.linkedList.IsEmpty());
-
-            // Test the size is 4
-            Assert.AreEqual(4, this.linkedList.Size());
-
-            // Test the first node value is a
-            Assert.AreEqual("a", this.linkedList.Retrieve(0));
-
-            // Test the second node value is b
-            Assert.AreEqual("b", this.linkedList.Retrieve(1));
-
-            // Test the third node value is e
-            Assert.AreEqual("e", this.linkedList.Retrieve(2));
-
-            // Test the fourth node value is d
-            Assert.AreEqual("d", this.linkedList.Retrieve(3));
+            var l = new SLL();
+            l.Append("a");
+            l.Replace("z", 0);
+            Assert.That(l.Retrieve(0), Is.EqualTo("z"));
         }
-
-        //Tests deleting node from linked list.
         [Test]
-        public void TestDeleteNode()
+        public void DeleteFirst()
         {
-            this.linkedList.Append("a");
-            this.linkedList.Append("b");
-            this.linkedList.Append("c");
-            this.linkedList.Append("d");
-
-            this.linkedList.Delete(2);
-
-            /**
-             * Linked list should now be:
-             * 
-             * a -> b -> d
-             */
-
-            // Test the linked list is not empty.
-            Assert.False(this.linkedList.IsEmpty());
-
-            // Test the size is 4
-            Assert.AreEqual(3, this.linkedList.Size());
-
-            // Test the first node value is a
-            Assert.AreEqual("a", this.linkedList.Retrieve(0));
-
-            // Test the second node value is b
-            Assert.AreEqual("b", this.linkedList.Retrieve(1));
-
-            // Test the fourth node value is d
-            Assert.AreEqual("d", this.linkedList.Retrieve(2));
+            var l = new SLL();
+            l.Append(1);
+            l.Append(2);
+            l.Delete(0);
+            Assert.That(l.Retrieve(0), Is.EqualTo(2));
         }
-
-        //Tests finding and retrieving node in linked list.
         [Test]
-        public void TestFindNode()
+        public void DeleteLast()
         {
-            this.linkedList.Append("a");
-            this.linkedList.Append("b");
-            this.linkedList.Append("c");
-            this.linkedList.Append("d");
-
-            /**
-             * Linked list should now be:
-             * 
-             * a -> b -> c -> d
-             */
-
-            bool contains = this.linkedList.Contains("b");
-            Assert.True(contains);
-
-            int index = this.linkedList.IndexOf("b");
-            Assert.AreEqual(1, index);
-
-            string value = (string)this.linkedList.Retrieve(1);
-            Assert.AreEqual("b", value);
+            var l = new SLL();
+            l.Append(1);
+            l.Append(2);
+            l.Delete(1);
+            Assert.That(l.Retrieve(0), Is.EqualTo(1));
+        }
+        [Test]
+        public void DeleteMiddle()
+        {
+            var l = new SLL();
+            l.Append("a");
+            l.Append("b");
+            l.Append("c");
+            l.Delete(1);
+            Assert.That(l.Retrieve(1), Is.EqualTo("c"));
+        }
+        [Test]
+        public void IndexOfAndContains()
+        {
+            var l = new SLL();
+            l.Append("x");
+            l.Append("y");
+            Assert.That(l.IndexOf("y"), Is.EqualTo(1));
+            Assert.That(l.Contains("z"), Is.False);
+        }
+        [Test]
+        public void Clear()
+        {
+            var l = new SLL();
+            l.Append(1);
+            l.Clear();
+            Assert.That(l.IsEmpty(), Is.True);
+        }
+        [Test]
+        public void ReverseEmpty()
+        {
+            var l = new SLL();
+            l.Reverse();
+            Assert.That(l.Size(), Is.EqualTo(0));
+        }
+        [Test]
+        public void ReverseOne()
+        {
+            var l = new SLL();
+            l.Append(1);
+            l.Reverse();
+            Assert.That(l.Retrieve(0), Is.EqualTo(1));
+        }
+        [Test]
+        public void ReverseMany()
+        {
+            var l = new SLL();
+            l.Append("a");
+            l.Append("b");
+            l.Append("c");
+            l.Reverse();
+            Assert.That(l.Retrieve(0), Is.EqualTo("c"));
+            Assert.That(l.Retrieve(2), Is.EqualTo("a"));
+        }
+        [Test]
+        public void ReverseThenAppend()
+        {
+            var l = new SLL();
+            l.Append(1);
+            l.Append(2);
+            l.Reverse();
+            l.Append(3);
+            Assert.That(l.Retrieve(2), Is.EqualTo(3));
+        }
+        [Test]
+        public void ReverseThenPrepend()
+        {
+            var l = new SLL();
+            l.Append(1);
+            l.Append(2);
+            l.Reverse();
+            l.Prepend(0);
+            Assert.That(l.Retrieve(0), Is.EqualTo(0));
         }
     }
 }

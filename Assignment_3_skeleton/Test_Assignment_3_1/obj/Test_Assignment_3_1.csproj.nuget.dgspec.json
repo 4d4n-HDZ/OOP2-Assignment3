@@ -1,14 +1,14 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Naty\\Desktop\\Assignment_3_skeleton\\Assignment_3_skeleton\\Test_Assignment_3_1\\Test_Assignment_3_1.csproj": {}
+    "C:\\Users\\jonah\\OneDrive - Southern Alberta Institute of Technology\\spring2025\\Programming\\Assignment_3\\Test_Assignment_3_1\\Test_Assignment_3_1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Naty\\Desktop\\Assignment_3_skeleton\\Assignment_3_skeleton\\Assignment_3_skeleton\\Assignment_3_skeleton.csproj": {
+    "C:\\Users\\jonah\\OneDrive - Southern Alberta Institute of Technology\\spring2025\\Programming\\Assignment_3\\Assignment_3\\Assignment_3.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\Naty\\Desktop\\Assignment_3_skeleton\\Assignment_3_skeleton\\Assignment_3_skeleton\\Assignment_3_skeleton.csproj",
-        "projectName": "Assignment_3_skeleton",
-        "projectPath": "C:\\Users\\Naty\\Desktop\\Assignment_3_skeleton\\Assignment_3_skeleton\\Assignment_3_skeleton\\Assignment_3_skeleton.csproj",
+        "projectUniqueName": "C:\\Users\\jonah\\OneDrive - Southern Alberta Institute of Technology\\spring2025\\Programming\\Assignment_3\\Assignment_3\\Assignment_3.csproj",
+        "projectName": "Assignment_3",
+        "projectPath": "C:\\Users\\jonah\\OneDrive - Southern Alberta Institute of Technology\\spring2025\\Programming\\Assignment_3\\Assignment_3\\Assignment_3.csproj",
         "UsingMicrosoftNETSdk": false,
         "frameworks": {
           "net472": {
@@ -20,20 +20,20 @@
         "net472": {}
       }
     },
-    "C:\\Users\\Naty\\Desktop\\Assignment_3_skeleton\\Assignment_3_skeleton\\Test_Assignment_3_1\\Test_Assignment_3_1.csproj": {
+    "C:\\Users\\jonah\\OneDrive - Southern Alberta Institute of Technology\\spring2025\\Programming\\Assignment_3\\Test_Assignment_3_1\\Test_Assignment_3_1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Naty\\Desktop\\Assignment_3_skeleton\\Assignment_3_skeleton\\Test_Assignment_3_1\\Test_Assignment_3_1.csproj",
+        "projectUniqueName": "C:\\Users\\jonah\\OneDrive - Southern Alberta Institute of Technology\\spring2025\\Programming\\Assignment_3\\Test_Assignment_3_1\\Test_Assignment_3_1.csproj",
         "projectName": "Test_Assignment_3_1",
-        "projectPath": "C:\\Users\\Naty\\Desktop\\Assignment_3_skeleton\\Assignment_3_skeleton\\Test_Assignment_3_1\\Test_Assignment_3_1.csproj",
-        "packagesPath": "C:\\Users\\Naty\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Naty\\Desktop\\Assignment_3_skeleton\\Assignment_3_skeleton\\Test_Assignment_3_1\\obj\\",
+        "projectPath": "C:\\Users\\jonah\\OneDrive - Southern Alberta Institute of Technology\\spring2025\\Programming\\Assignment_3\\Test_Assignment_3_1\\Test_Assignment_3_1.csproj",
+        "packagesPath": "C:\\Users\\jonah\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jonah\\OneDrive - Southern Alberta Institute of Technology\\spring2025\\Programming\\Assignment_3\\Test_Assignment_3_1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Naty\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jonah\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -49,8 +49,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Naty\\Desktop\\Assignment_3_skeleton\\Assignment_3_skeleton\\Assignment_3_skeleton\\Assignment_3_skeleton.csproj": {
-                "projectPath": "C:\\Users\\Naty\\Desktop\\Assignment_3_skeleton\\Assignment_3_skeleton\\Assignment_3_skeleton\\Assignment_3_skeleton.csproj"
+              "C:\\Users\\jonah\\OneDrive - Southern Alberta Institute of Technology\\spring2025\\Programming\\Assignment_3\\Assignment_3\\Assignment_3.csproj": {
+                "projectPath": "C:\\Users\\jonah\\OneDrive - Southern Alberta Institute of Technology\\spring2025\\Programming\\Assignment_3\\Assignment_3\\Assignment_3.csproj"
               }
             }
           }
@@ -65,7 +65,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net6.0": {
@@ -73,23 +73,15 @@
           "dependencies": {
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[17.3.2, )"
+              "version": "[17.9.0, )"
             },
             "NUnit": {
               "target": "Package",
               "version": "[3.13.3, )"
             },
-            "NUnit.Analyzers": {
-              "target": "Package",
-              "version": "[3.3.0, )"
-            },
             "NUnit3TestAdapter": {
               "target": "Package",
-              "version": "[4.2.1, )"
-            },
-            "coverlet.collector": {
-              "target": "Package",
-              "version": "[3.1.2, )"
+              "version": "[4.5.0, )"
             }
           },
           "imports": [
@@ -103,12 +95,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

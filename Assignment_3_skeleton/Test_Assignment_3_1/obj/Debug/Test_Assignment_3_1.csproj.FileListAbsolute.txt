@@ -1,0 +1,2 @@
+C:\Users\jonah\OneDrive - Southern Alberta Institute of Technology\spring2025\Programming\Assignment_3\Test_Assignment_3_1\obj\Debug\Test_Assignment_3_1.csproj.AssemblyReference.cache
+C:\Users\jonah\OneDrive - Southern Alberta Institute of Technology\spring2025\Programming\Assignment_3\Test_Assignment_3_1\obj\Debug\Test_Assignment_3_1.csproj.CoreCompileInputs.cache

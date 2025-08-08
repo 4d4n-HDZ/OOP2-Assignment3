@@ -1,30 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections.Generic;
 
-namespace Assignment_3_skeleton
+namespace Assignment_3
 {
     public static class SerializationHelper
     {
-        public static void SerializeUsers(List<User> users, string fileName)
+        public static void SerializeUsers(List<User> users, string path)
         {
-            DataContractSerializer serializer = new DataContractSerializer(typeof(List<User>));
-            using (FileStream stream = File.Create(fileName))
+            if (users == null) throw new ArgumentNullException(nameof(users));
+            if (path == null) throw new ArgumentNullException(nameof(path));
+            using (var fs = new FileStream(path, FileMode.Create))
             {
-                serializer.WriteObject(stream, users);
+                var f = new BinaryFormatter();
+                f.Serialize(fs, users);
             }
         }
-
-        public static List<User> DeserializeUsers(string fileName)
+        public static List<User> DeserializeUsers(string path)
         {
-            DataContractSerializer serializer = new DataContractSerializer(typeof(List<User>));
-            using (FileStream stream = File.OpenRead(fileName))
+            if (path == null) throw new ArgumentNullException(nameof(path));
+            using (var fs = new FileStream(path, FileMode.Open))
             {
-                return (List<User>)serializer.ReadObject(stream);
+                var f = new BinaryFormatter();
+                return (List<User>)f.Deserialize(fs);
             }
         }
     }

@@ -4,20 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment_3_skeleton
+namespace Assignment_3
 {
-    internal class Node
+    [Serializable]
+    public class Node
     {
-        object data;
-        Node next;
-
-        public object Data { get => data; set => data = value; }
-        public Node Next { get => next; set => next = value; }
-
-        public Node(object obj, Node node)
-        {
-            data = obj;
-            next = node;
-        }
+        public object Data { get; set; }
+        public Node Next { get; set; }
+        public Node(object data) => Data = data;
     }
 }

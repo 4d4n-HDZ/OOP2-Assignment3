@@ -1,54 +1,27 @@
-﻿using Assignment_3_skeleton;
-using System;
+﻿using Assignment_3;
+using NUnit.Framework;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
-namespace Test_Assignment_3
+namespace Test_Assignment_3_1
 {
+    [TestFixture]
     public class SerializationTests
     {
-        private List<User> users;
-        private readonly string testFileName = "test_users.bin";
-
+        private string f;
         [SetUp]
-        public void Setup()
-        {
-            users.Append(new User(1, "Joe Blow", "jblow@gmail.com", "password"));
-            users.Append(new User(2, "Joe Schmoe", "joe.schmoe@outlook.com", "abcdef"));
-            users.Append(new User(3, "Colonel Sanders", "chickenlover1890@gmail.com", "kfc5555"));
-            users.Append(new User(4, "Ronald McDonald", "burgers4life63@outlook.com", "mcdonalds999"));
-        }
-
+        public void SetUp() => f = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
         [TearDown]
-        public void TearDown()
-        {
-            this.users.Clear();
-        }
-
-        //Tests the object was serialized.
+        public void TearDown() { if (File.Exists(f)) File.Delete(f); }
         [Test]
-        public void TestSerialization()
+        public void SerializeAndDeserialize()
         {
-            SerializationHelper.SerializeUsers(users, testFileName);
-            Assert.IsTrue(File.Exists(testFileName));
-        }
-
-        [Test]
-        public void TestDeSerialization()
-        {
-            SerializationHelper.SerializeUsers(users, testFileName);
-            List<User> deserializedUsers = SerializationHelper.DeserializeUsers(testFileName);
-            Assert.AreEqual(users.Count, deserializedUsers.Count);
+            var users = new List<User> { new User("A"), new User("B"), new User("C") };
+            SerializationHelper.SerializeUsers(users, f);
+            var loaded = SerializationHelper.DeserializeUsers(f);
+            Assert.That(loaded.Count, Is.EqualTo(users.Count));
             for (int i = 0; i < users.Count; i++)
-            {
-                Assert.AreEqual(users[i].Id, deserializedUsers[i].Id);
-                Assert.AreEqual(users[i].Name, deserializedUsers[i].Name);
-                Assert.AreEqual(users[i].Email, deserializedUsers[i].Email);
-                Assert.AreEqual(users[i].Password, deserializedUsers[i].Password);
-            }
+                Assert.That(loaded[i], Is.EqualTo(users[i]));
         }
-
     }
 }
